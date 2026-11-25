@@ -15,6 +15,7 @@ Abra `guia-montagem-carrinho-3d.html` no Chrome ou Edge. O guia inclui o modelo 
 - `seguidor-4-sensores-makecode.ts`: código MakeCode de referência para quatro sensores.
 - `pista-referencia.png`: imagem de referência do traçado.
 - `microbit-montado-na-expansao.jpeg`: foto da montagem real do micro:bit na placa de expansão.
+- `mapa-ligacoes.svg`: esquema colorido dos sensores, micro:bit, L298N, motores e alimentação.
 
 ## Atenção antes de fabricar
 

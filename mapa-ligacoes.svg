@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="790" viewBox="0 0 1200 790">
+<defs><style>
+text{font-family:Arial,sans-serif;fill:#18212d}.title{font-size:28px;font-weight:700}.head{font-size:19px;font-weight:700}.body{font-size:16px}.small{font-size:14px}.box{fill:#fff;stroke:#b8c4d3;stroke-width:2}.pin{font-weight:700}.wire{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+</style></defs>
+<rect width="1200" height="790" rx="18" fill="#f0f2f5"/>
+<text x="36" y="48" class="title">Mapa de ligações — seguidor de linha com 4 sensores</text>
+<text x="36" y="76" class="small">Vista funcional. S1 fica à esquerda do carrinho olhando no sentido de marcha.</text>
+<!-- Sensors -->
+<rect x="35" y="112" width="330" height="344" rx="14" class="box"/>
+<text x="55" y="144" class="head">Sensores (frente do carrinho)</text>
+<text x="55" y="171" class="small">Em cada módulo: VCC → 3V · GND → GND · DO → pino</text>
+<g class="body">
+<text x="58" y="218">S1 · extremo esquerdo</text><text x="58" y="244" fill="#ad7100">🟡 sinal amarelo → P0</text>
+<text x="58" y="290">S2 · centro esquerdo</text><text x="58" y="316" fill="#205caa">🔵 sinal azul → P1</text>
+<text x="58" y="362">S3 · centro direito</text><text x="58" y="388" fill="#c75b00">🟠 sinal laranja → P2</text>
+<text x="58" y="434">S4 · extremo direito</text><text x="58" y="460" fill="#444">⚪ sinal branco → P8</text>
+</g>
+<!-- microbit -->
+<rect x="430" y="185" width="300" height="245" rx="18" fill="#dcecff" stroke="#4673a8" stroke-width="3"/>
+<text x="455" y="220" class="head">Micro:bit + expansão</text>
+<text x="455" y="255" class="body">P0  ← sensor S1 (amarelo)</text>
+<text x="455" y="286" class="body">P1  ← sensor S2 (azul)</text>
+<text x="455" y="317" class="body">P2  ← sensor S3 (laranja)</text>
+<text x="455" y="348" class="body">P8  ← sensor S4 (branco)</text>
+<text x="455" y="389" class="body">3V e GND alimentam os sensores</text>
+<!-- sensor colored connections -->
+<path d="M365 238 H402 V255 H430" class="wire" stroke="#e4ad18"/>
+<path d="M365 310 H410 V286 H430" class="wire" stroke="#2875d0"/>
+<path d="M365 382 H416 V317 H430" class="wire" stroke="#ee7c24"/>
+<path d="M365 454 H422 V348 H430" class="wire" stroke="#555"/>
+<!-- hbridge -->
+<rect x="790" y="145" width="365" height="360" rx="14" class="box"/>
+<text x="815" y="180" class="head">L298N (ponte H)</text>
+<text x="815" y="215" class="body">ENA ← P13 (PWM motor esquerdo)</text>
+<text x="815" y="246" class="body">IN1 ← P14 · IN2 ← P15</text>
+<text x="815" y="289" class="body">ENB ← P16 (PWM motor direito)</text>
+<text x="815" y="320" class="body">IN3 ← P19 · IN4 ← P20</text>
+<path d="M730 255 H770 V215 H790" class="wire" stroke="#6f42c1"/>
+<path d="M730 286 H775 V246 H790" class="wire" stroke="#a25ac4"/>
+<path d="M730 317 H780 V289 H790" class="wire" stroke="#178a82"/>
+<path d="M730 348 H785 V320 H790" class="wire" stroke="#da5b70"/>
+<text x="815" y="370" class="body">Motor esquerdo → OUT1 / OUT2</text>
+<text x="815" y="401" class="body">Motor direito → OUT3 / OUT4</text>
+<text x="815" y="444" class="small">Remova os jumpers ENA e ENB para usar P13/P16.</text>
+<text x="815" y="466" class="small">Se o motor girar ao contrário, inverta os 2 fios</text>
+<text x="815" y="486" class="small">desse motor no borne de saída correspondente.</text>
+<!-- power zone -->
+<rect x="35" y="535" width="1120" height="215" rx="14" fill="#fff8df" stroke="#d4bd69" stroke-width="2"/>
+<text x="58" y="571" class="head">Alimentação e terra comum</text>
+<text x="58" y="609" class="body">Bateria + → IN+ do LM2596</text>
+<text x="58" y="639" class="body">Bateria − → IN− do LM2596</text>
+<text x="407" y="609" class="body">LM2596 OUT+ → +12V / VS da L298N</text>
+<text x="407" y="639" class="body">LM2596 OUT− → GND da L298N</text>
+<text x="790" y="609" class="body">Expansão GND ↔ L298N GND</text>
+<text x="790" y="639" class="body">Sensor GND ↔ expansão GND</text>
+<text x="58" y="691" class="small" font-weight="700">Atenção: não ligue OUT+ do LM2596 ao borne 5V da L298N. Mantenha o micro:bit no USB/alimentação própria.</text>
+<text x="58" y="718" class="small">Ajuste o LM2596 para a tensão nominal dos motores (kit TT: confira a etiqueta; teste inicial em baixa tensão).</text>
+</svg>
