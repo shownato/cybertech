@@ -14,6 +14,7 @@ Abra `guia-montagem-carrinho-3d.html` no Chrome ou Edge. O guia inclui o modelo 
 - `chassi-modificado-rodas-80mm-3d.html`: visualização 3D do chassi.
 - `seguidor-4-sensores-makecode.ts`: código MakeCode de referência para quatro sensores.
 - `pista-referencia.png`: imagem de referência do traçado.
+- `microbit-montado-na-expansao.jpeg`: foto da montagem real do micro:bit na placa de expansão.
 
 ## Atenção antes de fabricar
 
