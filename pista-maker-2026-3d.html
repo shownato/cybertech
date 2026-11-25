@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pista 3D · Clube Maker 2026</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eef1f4;color:#192737;font:16px system-ui}main{max-width:1250px;margin:auto;padding:24px}h1{font-size:30px;margin:0 0 8px}p{line-height:1.5}.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0}button,select{font:inherit;padding:10px;border:1px solid #a8b5c3;border-radius:7px;background:white;color:#192737}button:first-child{background:#164c80;color:white}label{display:flex;gap:8px;align-items:center;flex-wrap:wrap}canvas{width:100%;height:clamp(350px,62vh,700px);display:block;background:#d6dee8;border-radius:12px;touch-action:none;cursor:grab}.readings{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.sensor{padding:6px 12px;border-radius:5px;background:#17202b;color:white}.sensor.on{background:white;color:#17202b;outline:1px solid #6b7e91}output{font-variant-numeric:tabular-nums}#status{min-height:24px}
+</style>
+<main><h1>Pista 3D · Clube Maker 2026</h1>
+<p>Traçado reconstruído da imagem enviada. Escala estimada de 4,8 × 2,52 m, linha de 19 mm. Arraste para girar e use a roda do mouse para aproximar.</p>
+<div class="toolbar"><button id="start">Iniciar</button><button id="reset">Voltar à largada</button><button id="top">Por cima</button><button id="iso">Vista 3D</button>
+<label>Modo <select id="mode"><option value="sensors">Quatro sensores</option><option value="demo">Volta guiada</option></select></label>
+<label>Velocidade <input id="speed" type="range" min="0.08" max="0.68" step=".01" value=".22"><output id="speedval">0,22 m/s</output></label>
+<label>Ganho <input id="gain" type="range" min="1" max="14" step=".5" value="6"></label></div>
+<canvas id="view" aria-label="Pista tridimensional com carrinho seguidor de linha"></canvas>
+<div class="readings"><span class="sensor">S1</span><span class="sensor">S2</span><span class="sensor">S3</span><span class="sensor">S4</span><span>Tempo <output id="time">0,00 s</output></span></div>
+<p id="status" role="status">Pronto para largar.</p>
+<p>Quatro sensores simula leitura digital, correção proporcional e busca de 250 ms. Volta guiada serve para inspecionar o percurso. A simulação simplifica motores, aderência e sensores. Os tempos dependem da escala estimada.</p></main>
+<script>
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d');
+const route=document.createElementNS('http://www.w3.org/2000/svg','path');
+route.setAttribute('d','M 273 550 L 949 550 C 1048 550 1122 477 1122 376 L1122 268 C1122 174 1040 94 949 94 C901 94 862 132 862 181 L862 355 C862 405 899 444 949 444 C999 444 1038 405 1038 355 C1038 307 999 270 949 270 L775 270 C725 270 688 232 688 183 C688 134 650 94 600 94 L169 94 C112 94 63 141 63 198 C63 219 77 230 96 230 L132 230 C152 230 167 246 167 267 L167 444 C167 501 214 550 273 550 Z');
+const length=route.getTotalLength(),points=[];
+for(let s=0;s<length;s+=2){const p=route.getPointAtLength(s);points.push({x:p.x*.004,y:p.y*.004});}
+points.push(points[0]);
+const cumulative=[0];for(let i=1;i<points.length;i++)cumulative.push(cumulative[i-1]+Math.hypot(points[i].x-points[i-1].x,points[i].y-points[i-1].y));
+const total=cumulative[cumulative.length-1];
+let yaw=-.16,tilt=.86,zoom=1,drag=null,running=false,elapsed=0,last=0,travel=0,lastSide=0,lost=-1,completed=false;
+let robot={x:1.6,y:2.2,a:0},trail=[],reads=[false,false,false,false];
+const status=document.querySelector('#status'),start=document.querySelector('#start');
+const speed=document.querySelector('#speed'),mode=document.querySelector('#mode'),gain=document.querySelector('#gain');
+function nearest(x,y){
+ let best=Infinity;
+ for(let i=1;i<points.length;i++){
+  const a=points[i-1],b=points[i],dx=b.x-a.x,dy=b.y-a.y;
+  const t=Math.max(0,Math.min(1,((x-a.x)*dx+(y-a.y)*dy)/(dx*dx+dy*dy)));
+  best=Math.min(best,Math.hypot(x-a.x-t*dx,y-a.y-t*dy));
+ }
+ return best;
+}
+function atDistance(s){
+ s=(s+total)%total;
+ let i=1;while(i<cumulative.length-1&&cumulative[i]<s)i++;
+ const a=points[i-1],b=points[i],t=(s-cumulative[i-1])/(cumulative[i]-cumulative[i-1]);
+ return {x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t,a:Math.atan2(b.y-a.y,b.x-a.x)};
+}
+const initialDistance=.508;
+robot=atDistance(initialDistance);
+function stop(message){running=false;start.textContent='Iniciar';status.textContent=message;}
+function update(dt){
+ if(!running)return;
+ elapsed+=dt;
+ const velocity=Number(speed.value);
+ if(mode.value==='demo'){
+  travel+=velocity*dt;
+  robot=atDistance(initialDistance+travel);
+  if(travel>=total){completed=true;stop('Volta guiada concluída.');}
+ }
+ // Footprint radius 2 mm plus half the 19 mm line width.
+ const offsets=[-.03,-.01,.01,.03];
+ reads=offsets.map(o=>nearest(robot.x+.075*Math.cos(robot.a)-o*Math.sin(robot.a),robot.y+.075*Math.sin(robot.a)+o*Math.cos(robot.a))<=.0115);
+ if(mode.value==='sensors'){
+  let n=0,sum=0;
+  reads.forEach((on,i)=>{if(on){n++;sum+=(-3+2*i);}});
+  let left,right;
+  if(n){
+   const error=sum/n;
+   if(error)lastSide=Math.sign(error);
+   lost=-1;
+   const base=Math.abs(error)>=2?velocity*.8:velocity;
+   const correction=Number(gain.value)*error*.025;
+   left=Math.max(0,Math.min(.68,base+correction));
+   right=Math.max(0,Math.min(.68,base-correction));
+  }else{
+   if(lost<0)lost=elapsed;
+   if(lastSide===0||elapsed-lost>=.25){stop('Linha perdida. Reposicione na largada e ajuste velocidade ou ganho.');return;}
+   left=lastSide>0?.19:0;right=lastSide<0?.19:0;
+  }
+  const v=(left+right)/2,w=(left-right)/.152;
+  robot.a+=w*dt;
+  robot.x+=v*Math.cos(robot.a)*dt;robot.y+=v*Math.sin(robot.a)*dt;travel+=v*dt;
+  if(travel>total*.8&&Math.hypot(robot.x-atDistance(initialDistance).x,robot.y-2.2)<.07){completed=true;stop('Volta concluída com quatro sensores.');}
+ }
+ if(trail.length===0||Math.hypot(robot.x-trail[trail.length-1].x,robot.y-trail[trail.length-1].y)>.012)trail.push({x:robot.x,y:robot.y});
+ document.querySelector('#time').textContent=elapsed.toFixed(2).replace('.',',')+' s';
+ document.querySelectorAll('.sensor').forEach((e,i)=>e.classList.toggle('on',reads[i]));
+}
+function draw(){
+ const dpr=devicePixelRatio||1,w=canvas.clientWidth,h=canvas.clientHeight;
+ if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);}
+ ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+ const scale=Math.min(w/5.8,h/3.6)*zoom,co=Math.cos(yaw),si=Math.sin(yaw);
+ function project(x,y,z=0){x-=2.4;y-=1.26;return [w/2+(x*co-y*si)*scale,h/2+(x*si+y*co)*Math.sin(tilt)*scale-z*Math.cos(tilt)*scale];}
+ function poly(pts,color){ctx.beginPath();pts.forEach((p,i)=>{const [x,y]=project(...p);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.closePath();ctx.fillStyle=color;ctx.fill();}
+ function line(pts,color,width){ctx.beginPath();pts.forEach((p,i)=>{const q=project(...p);i?ctx.lineTo(...q):ctx.moveTo(...q);});ctx.strokeStyle=color;ctx.lineWidth=width*scale;ctx.lineJoin='round';ctx.lineCap='round';ctx.stroke();}
+ poly([[0,0,-.03],[4.8,0,-.03],[4.8,2.52,-.03],[0,2.52,-.03]],'#657082');
+ poly([[0,0,0],[4.8,0,0],[4.8,2.52,0],[0,2.52,0]],'#101519');
+ line(points.map(p=>[p.x,p.y,.001]),'#f2f5f4',.019);
+ if(trail.length>1)line(trail.map(p=>[p.x,p.y,.004]),'#35b7d0',.006);
+ // Side markers copied approximately from the reference.
+ [[169,118],[600,118],[664,183],[775,294],[949,294],[889,181],[889,355],[1097,268],[1097,376],[949,526],[760,575],[412,575],[273,526],[89,198]].forEach(([x,y])=>{
+  poly([[x*.004-.009,y*.004-.022,.002],[x*.004+.009,y*.004-.022,.002],[x*.004+.009,y*.004+.022,.002],[x*.004-.009,y*.004+.022,.002]],'#e7ecec');
+ });
+ function local(x,y,z){return [robot.x+x*Math.cos(robot.a)-y*Math.sin(robot.a),robot.y+x*Math.sin(robot.a)+y*Math.cos(robot.a),z];}
+ function box(x,y,z,l,b,height,color){
+  const low=[local(x-l/2,y-b/2,z),local(x+l/2,y-b/2,z),local(x+l/2,y+b/2,z),local(x-l/2,y+b/2,z)];
+  const high=low.map(p=>[p[0],p[1],p[2]+height]);
+  poly([low[1],low[2],high[2],high[1]],'#293b46');
+  poly([low[2],low[3],high[3],high[2]],'#42545e');poly(high,color);
+ }
+ box(0,0,.028,.145,.102,.009,'#c69e64');
+ box(-.018,-.076,.005,.065,.026,.055,'#262e36');box(-.018,.076,.005,.065,.026,.055,'#262e36');
+ box(-.018,-.048,.015,.05,.019,.023,'#edba36');box(-.018,.048,.015,.05,.019,.023,'#edba36');
+ box(-.042,0,.04,.049,.027,.018,'#657180');
+ box(.025,0,.04,.044,.044,.005,'#bc4942');box(.025,0,.045,.022,.018,.013,'#2f3741');
+ box(-.016,0,.066,.038,.056,.004,'#1b889b');box(-.016,0,.071,.002,.049,.037,'#243f46');
+ box(.075,0,.018,.035,.086,.004,'#bd945a');
+ [-.03,-.01,.01,.03].forEach((o,i)=>box(.075,o,.013,.014,.009,.005,reads[i]?'#f9f6c8':'#20835c'));
+ // Start stripe and travel direction.
+ line([[1.6,2.16,.002],[1.6,2.24,.002]],'#36d69d',.008);
+ ctx.fillStyle='#31475f';ctx.font='13px system-ui';ctx.fillText('Linha 19 mm · chassi e sensores em escala estimada',16,h-16);
+}
+start.onclick=()=>{if(completed)return;running=!running;start.textContent=running?'Pausar':'Iniciar';status.textContent=running?'Teste em andamento.':'Teste pausado.';};
+document.querySelector('#reset').onclick=()=>{stop('Pronto para largar.');robot=atDistance(initialDistance);elapsed=0;travel=0;lastSide=0;lost=-1;completed=false;trail=[];reads.fill(false);document.querySelector('#time').textContent='0,00 s';document.querySelectorAll('.sensor').forEach(e=>e.classList.remove('on'));};
+document.querySelector('#top').onclick=()=>{yaw=0;tilt=Math.PI/2;zoom=1;};
+document.querySelector('#iso').onclick=()=>{yaw=-.16;tilt=.86;zoom=1;};
+mode.onchange=()=>document.querySelector('#reset').click();
+speed.oninput=()=>document.querySelector('#speedval').textContent=Number(speed.value).toFixed(2).replace('.',',')+' m/s';
+canvas.onpointerdown=e=>{canvas.setPointerCapture(e.pointerId);drag={x:e.clientX,y:e.clientY};};
+canvas.onpointermove=e=>{if(!drag)return;yaw+=(e.clientX-drag.x)*.006;tilt=Math.max(.3,Math.min(Math.PI/2,tilt+(e.clientY-drag.y)*.006));drag={x:e.clientX,y:e.clientY};};
+canvas.onpointerup=canvas.onpointercancel=()=>drag=null;
+canvas.onwheel=e=>{e.preventDefault();zoom=Math.max(.65,Math.min(2.5,zoom*Math.exp(-e.deltaY*.001)));};
+let accumulator=0;
+function frame(t){const dt=last?Math.min(.06,(t-last)/1000):0;last=t;accumulator=running?accumulator+dt:0;while(accumulator>=.01){update(.01);accumulator-=.01;}draw();requestAnimationFrame(frame);}
+requestAnimationFrame(frame);
+</script></html>

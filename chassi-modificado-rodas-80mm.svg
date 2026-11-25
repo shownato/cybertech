@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="600mm"
+   height="400mm"
+   viewBox="0 0 600 400"
+   version="1.1"
+   id="svg19"
+   sodipodi:docname="Chassi modificado.svg"
+   inkscape:version="1.2-alpha1 (unknown)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview21"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.0768542"
+     inkscape:cx="481.95941"
+     inkscape:cy="299.01914"
+     inkscape:window-width="1920"
+     inkscape:window-height="974"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs16" />
+  <g
+     inkscape:label="CORTE"
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:power="30"
+     inkscape:feed="80"
+     inkscape:engrave="0"
+     inkscape:highlight-color="#e13535">
+    <path
+       d="m 49.91032,5.4090879 h 38 l 5,5.0000001 v 16 l 40,13 v 10.5 h -12.9374 v 25.7331 l -0.0488,6.9978 -0.041,0.8181 -2.2498,-1e-4 0.082,12.5986 h 2.0452 l -0.007,7.745102 v 26.1074 h 13.1568 v 38.5 q 0,11 -11,11 h -106 q -10.9999998,0 -10.9999998,-11 v -38.5 h 13.4379998 v -26.1074 l 0.0122,-8.644602 h 1.7998 l -0.1637,-12.5167 h -1.677 l -0.0026,-6.9982 v -25.7331 h -13.4066998 v -10.5 l 39.9999998,-13 v -16 z"
+       id="path12"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       x="52.708851"
+       y="27.407621"
+       width="3.2029343"
+       height="20.002934"
+       rx="1.6014671"
+       id="rect16"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.0970658" />
+    <rect
+       x="81.708855"
+       y="27.407621"
+       width="3.2029343"
+       height="20.002934"
+       rx="1.6014671"
+       id="rect18"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.0970658" />
+    <rect
+       x="61.91032"
+       y="129.65909"
+       width="14"
+       height="3.5"
+       rx="1.75"
+       id="rect32"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       x="61.908001"
+       y="163.65678"
+       width="13.904639"
+       height="3.204639"
+       rx="1.7380799"
+       id="rect34"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.0953611" />
+    <rect
+       x="38.93322"
+       y="83.212585"
+       width="3.1087"
+       height="11.6987"
+       id="rect36"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       x="95.545013"
+       y="83.744385"
+       width="3.1087"
+       height="11.6987"
+       id="rect38"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       id="sensores"
+       x="61.91032"
+       y="29.409088"
+       width="14"
+       height="7"
+       rx="3.5"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       id="motor-esquerdo"
+       x="23.91032"
+       y="117.40909"
+       width="10"
+       height="6"
+       rx="3"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       id="motor-direito"
+       x="103.91032"
+       y="117.40909"
+       width="10"
+       height="6"
+       rx="3"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       id="alimentacao"
+       x="25.91032"
+       y="142.40909"
+       width="12"
+       height="7"
+       rx="3.5"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       id="frente0"
+       x="62.309555"
+       y="42.908321"
+       width="3.1015353"
+       height="5.0015354"
+       rx="0.96922982"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.0984646" />
+    <rect
+       id="frente1"
+       x="72.309547"
+       y="42.908321"
+       width="3.1015353"
+       height="5.0015354"
+       rx="0.96922982"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.0984646" />
+    <rect
+       id="esquerda0"
+       x="20.31032"
+       y="127.90909"
+       width="3.2"
+       height="5"
+       rx="1"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       id="esquerda1"
+       x="30.31032"
+       y="127.90909"
+       width="3.2"
+       height="5"
+       rx="1"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       id="direita0"
+       x="103.31032"
+       y="127.90909"
+       width="3.2"
+       height="5"
+       rx="1"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       id="direita1"
+       x="113.31032"
+       y="127.90909"
+       width="3.2"
+       height="5"
+       rx="1"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1"
+       inkscape:label="direita1" />
+    <rect
+       id="traseira0"
+       x="21.31032"
+       y="154.90909"
+       width="3.2"
+       height="5"
+       rx="1"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       id="traseira1"
+       x="31.31032"
+       y="154.90909"
+       width="3.2"
+       height="5"
+       rx="1"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <ellipse
+       id="auxiliar-1"
+       cx="100.61554"
+       cy="147.06949"
+       rx="1.9576367"
+       ry="1.9576368"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.0847264" />
+    <circle
+       id="auxiliar-2"
+       cx="110.26897"
+       cy="147.23309"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.0847264"
+       r="1.9576368" />
+    <rect
+       x="153.2482"
+       y="-82.282982"
+       width="3.1825128"
+       height="29.881912"
+       rx="1.5912564"
+       id="rect18-5"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.118259"
+       transform="matrix(0.00962819,0.99995365,-0.99999093,0.00425935,0,0)" />
+    <rect
+       x="174.13269"
+       y="-82.045731"
+       width="3.1825128"
+       height="29.881912"
+       rx="1.5912564"
+       id="rect18-5-0"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.118259"
+       transform="matrix(0.00962819,0.99995365,-0.99999093,0.00425935,0,0)" />
+    <rect
+       x="168.97191"
+       y="-81.849724"
+       width="3.1825128"
+       height="29.881912"
+       rx="1.5912564"
+       id="rect18-5-9"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.118259"
+       transform="matrix(0.00962819,0.99995365,-0.99999093,0.00425935,0,0)" />
+    <rect
+       x="158.89815"
+       y="-81.946709"
+       width="3.1825128"
+       height="29.881912"
+       rx="1.5912564"
+       id="rect18-5-02"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.118259"
+       transform="matrix(0.00962819,0.99995365,-0.99999093,0.00425935,0,0)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:power="50"
+     inkscape:feed="50"
+     inkscape:engrave="2"
+     inkscape:label="CONTORNO" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:power="50"
+     inkscape:feed="50"
+     inkscape:engrave="1"
+     inkscape:label="PREENCHIMENTO"
+     inkscape:highlight-color="#818181">
+    <rect
+       x="137.09952"
+       y="74.644958"
+       width="86"
+       height="35"
+       rx="4"
+       id="rect14"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       x="163.89952"
+       y="86.644958"
+       width="3.4000001"
+       height="18"
+       rx="1.7"
+       id="rect20"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       x="192.89952"
+       y="86.644958"
+       width="3.4000001"
+       height="18"
+       rx="1.7"
+       id="rect22"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       x="145.09952"
+       y="79.644958"
+       width="12"
+       height="3.4000001"
+       rx="1.7"
+       id="rect24"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       x="165.09952"
+       y="79.644958"
+       width="12"
+       height="3.4000001"
+       rx="1.7"
+       id="rect26"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       x="185.09952"
+       y="79.644958"
+       width="12"
+       height="3.4000001"
+       rx="1.7"
+       id="rect28"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+    <rect
+       x="205.09952"
+       y="79.644958"
+       width="12"
+       height="3.4000001"
+       rx="1.7"
+       id="rect30"
+       inkscape:power="50"
+       inkscape:feed="50"
+       inkscape:engrave="0"
+       style="fill:none;stroke:#ff0000;stroke-width:0.1" />
+  </g>
+</svg>
