@@ -1,5 +1,7 @@
 # Projeto dos dois carrinhos — SC Cria+
 
+O [guia dos dois desafios](GUIA-DOS-DESAFIOS.md) relaciona cada anexo aos materiais da equipe. O Carrinho 1 é um protótipo de treino da Missão Controlada. A organização fornece o robô oficial.
+
 Os arquivos estão separados por veículo. **Confira o número do carrinho antes de abrir ou gravar qualquer código.**
 
 ## Carrinho 1 — controle remoto (dois micro:bits)

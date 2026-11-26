@@ -1,5 +1,7 @@
 # Carrinho 1 — controle remoto
 
+Este é o protótipo de treino. A prova oficial usa três transmissores e o robô fornecido pela organização. Veja a [tabela de comandos do Anexo I](../GUIA-DOS-DESAFIOS.md).
+
 - `01-microbit-controle.ts`: grave no micro:bit de mão.
 - `02-microbit-receptor-no-carrinho.ts`: grave no micro:bit que fica no carrinho, conectado à L298N.
 
