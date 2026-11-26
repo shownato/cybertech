@@ -1,32 +1,29 @@
-# Seguidor de linha — SC Cria+
+# Projeto dos carrinhos — SC Cria+
 
-Projeto de montagem e teste de um carrinho seguidor de linha com micro:bit.
+Há **dois carrinhos e dois programas diferentes**. Abra a pasta do carrinho que vai usar antes de copiar o código para o MakeCode.
 
-## Abrir o projeto
+## Carrinho 1 — controle remoto com dois micro:bits
 
-Abra `guia-montagem-carrinho-3d.html` no Chrome ou Edge. O guia inclui o modelo 3D de montagem e a pista 3D de teste. Para visualizar arquivos separadamente, use `pista-maker-2026-3d.html` e `chassi-modificado-rodas-80mm-3d.html`.
+Este é o primeiro carrinho, comandado por rádio. Ele usa dois micro:bits:
 
-## Arquivos
+1. Grave [`01-microbit-controle.ts`](carrinho-1-controle-dois-microbits/01-microbit-controle.ts) no micro:bit que fica na mão.
+2. Grave [`02-microbit-receptor-no-carrinho.ts`](carrinho-1-controle-dois-microbits/02-microbit-receptor-no-carrinho.ts) no micro:bit instalado no carrinho e ligado à L298N.
 
-- `guia-montagem-carrinho-3d.html`: guia visual de montagem com a pista integrada.
+Os dois códigos usam rádio grupo 1. O controle envia `F0`, `R0`, `F1`, `R1` ou `P0`; o receptor executa esses comandos nos motores.
+
+## Carrinho 2 — seguidor de linha autônomo
+
+Este carrinho usa quatro sensores e segue a linha sem controle remoto. O código está em [`microbit-seguidor-4-sensores.ts`](carrinho-2-seguidor-autonomo/microbit-seguidor-4-sensores.ts). **Não grave esse programa no Carrinho 1.**
+
+## Desenho, montagem e pista
+
+Abra `guia-montagem-carrinho-3d.html` no Chrome ou Edge. O guia mostra a montagem e inclui a pista 3D. O mapa de ligações e os arquivos do chassi também ficam nesta pasta.
+
+- `mapa-ligacoes.svg`: sensores, micro:bit, L298N, motores e alimentação do carrinho autônomo.
 - `pista-maker-2026-3d.html`: simulador 3D da pista.
-- `chassi-modificado-rodas-80mm.svg`: desenho vetorial do chassi, em milímetros.
-- `chassi-modificado-rodas-80mm-3d.html`: visualização 3D do chassi.
-- `seguidor-4-sensores-makecode.ts`: código MakeCode de referência para quatro sensores.
-- `controle-dois-microbits-controle.ts`: código do micro:bit de mão para controlar o carrinho por rádio.
-- `controle-dois-microbits-carrinho.ts`: código do micro:bit instalado no carrinho, conectado à L298N.
-- `pista-referencia.png`: imagem de referência do traçado.
-- `microbit-montado-na-expansao.jpeg`: foto da montagem real do micro:bit na placa de expansão.
-- `mapa-ligacoes.svg`: esquema colorido dos sensores, micro:bit, L298N, motores e alimentação.
+- `chassi-modificado-rodas-80mm.svg`: desenho vetorial do chassi em milímetros.
+- `chassi-modificado-rodas-80mm-3d.html`: vista 3D do chassi.
+- `microbit-montado-na-expansao.jpeg`: foto da placa montada.
+- `pista-referencia.png`: imagem do traçado.
 
-## Atenção antes de fabricar
-
-Confira as dimensões dos motores, rodas, sensores, espaçadores e furos nas peças reais. Faça primeiro um teste de encaixe em retalho de MDF e confirme a altura dos sensores sobre a pista. O SVG representa o desenho; a largura do corte a laser e a espessura real do MDF podem alterar o encaixe.
-
-O programa é uma referência para adaptar no MakeCode às conexões e à lógica de controle montadas no carrinho. Teste as saídas dos sensores e dos motores com as rodas suspensas antes de colocar o robô na pista.
-
-## Carrinho controlado por dois micro:bits
-
-Os dois arquivos `controle-dois-microbits-*.ts` formam outro modo de uso, separado do seguidor autônomo por sensores. Grave o arquivo `controle` no micro:bit de mão e `carrinho` no micro:bit ligado à L298N. Ambos usam rádio grupo 1. Toque A para comandar o motor esquerdo e B para o direito; incline o controle para trás (Roll abaixo de -35°) ao tocar para selecionar ré. Cada motor mantém o último comando recebido. Para avançar com os dois, toque A e depois B; para parar ambos, aperte A+B juntos. Faça o primeiro teste com as rodas suspensas.
-
-Na L298N, retire os jumpers ENA e ENB; ligue P13/P14/P15 em ENA/IN1/IN2 e P16/P19/P20 em ENB/IN3/IN4. Se um motor andar ao contrário, troque os dois fios dele em OUT1/OUT2 ou OUT3/OUT4, ou altere a opção `INVERTER_*` no código.
+Antes de testar os motores, levante as rodas do chão. Confira as tensões e as ligações da L298N; não conecte a bateria diretamente ao micro:bit.
