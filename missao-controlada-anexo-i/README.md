@@ -1,5 +1,11 @@
 # Missão Controlada · Anexo I
 
+## Pista virtual de treino
+
+A [pista Missão Conexão](pista-de-treino/index.html) tem três modos de arena. Baixe o HTML e abra no Chrome ou Edge. Use as setas para dirigir, Shift para velocidade maior, Espaço para parar e os botões na tela para responder de A a E.
+
+Para usar os controles físicos, abra as instruções do receptor dentro da página. O programa da pista recebe os comandos por rádio e os encaminha ao computador por USB. Use uma das três placas como receptora temporária e teste os transmissores em etapas. O simulador de LEDs do Anexo III é outro receptor de treino.
+
 Crie três projetos no MakeCode. Na aba JavaScript, cole um arquivo por projeto e grave cada projeto em seu próprio micro:bit. Identifique as placas como Movimento, Giro e Respostas.
 
 | Placa da equipe | Programa para a prova |
