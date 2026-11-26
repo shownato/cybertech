@@ -2,6 +2,12 @@
 
 Crie três projetos no MakeCode. Na aba JavaScript, cole um arquivo por projeto e grave cada projeto em seu próprio micro:bit. Identifique as placas como Movimento, Giro e Respostas.
 
+| Placa da equipe | Programa para a prova |
+|---|---|
+| Micro:bit 1 | [Movimento](01-movimento.ts) |
+| Micro:bit 2 | [Giro](02-giro.ts) |
+| Micro:bit 3 | [Respostas](03-respostas.ts) |
+
 | Programa | Botões e comandos |
 |---|---|
 | [01 · Movimento](01-movimento.ts) | A envia frente lenta (F0), B envia frente rápida (F1). Com Roll abaixo de −35°, A envia ré lenta (R0) e B envia ré rápida (R1). A+B envia parada (P0). |
@@ -16,6 +22,6 @@ Os três programas passaram na compilação com MakeCode para micro:bit 9.1.2 e 
 
 O [simulador da organização](https://makecode.microbit.org/_di7HECTcVXhq) recebe texto no grupo 1 e mostra o comando nos LEDs. Os três transmissores foram conferidos com o código desse receptor em um teste de software. As 12 mensagens distintas acionaram os sete padrões de movimento ou parada e as cinco letras esperadas.
 
-Para testar nas placas, use uma como receptora e grave um transmissor por vez em outra. Confira frente e ré nas duas velocidades, os dois sentidos de giro, a parada com A+B e as cinco respostas. No receptor, D0 indica direita e E0 indica esquerda. No dia da prova, configure os três transmissores com o grupo atribuído à equipe.
+Com as três placas da equipe, use temporariamente a placa 3 como receptora para testar movimento e giro. Depois, use a placa 1 como receptora e grave Respostas na placa 3 para testar as cinco letras. Ao terminar, restaure Movimento na placa 1. Confira frente e ré nas duas velocidades, os dois sentidos de giro e a parada com A+B. Na prova, as três placas da equipe funcionam como transmissoras e a organização fornece o robô receptor.
 
 [Guia dos dois desafios](../GUIA-DOS-DESAFIOS.md) · [Protótipo de treino](prototipo-de-treino/)
