@@ -10,7 +10,7 @@ A organização fornece o robô. A equipe leva **três micro:bits transmissores*
 | 2 · Giro | D0 direita, E0 esquerda, P0 parada | [Giro](missao-controlada-anexo-i/02-giro.ts) |
 | 3 · Respostas | AA, BB, CC, DD, EE para A até E | [Respostas](missao-controlada-anexo-i/03-respostas.ts) |
 
-O [protótipo de dois micro:bits](carrinho-1-controle-dois-microbits/) serve para treino. Seu receptor interpreta F0/F1 como comandos de motores diferentes. Na prova, esses comandos indicam velocidades do robô da organização. O receptor USB também serve para treino. Se houver somente três placas disponíveis, dedique as três aos transmissores para a prova.
+O [protótipo de dois micro:bits](missao-controlada-anexo-i/prototipo-de-treino/) serve para treino. Seu receptor interpreta F0/F1 como comandos de motores diferentes. Na prova, esses comandos indicam velocidades do robô da organização. O receptor USB também serve para treino. Se houver somente três placas disponíveis, dedique as três aos transmissores para a prova.
 
 Treinem percorrer pelo menos três estações diferentes e retornar pelo portal. São duas tentativas oficiais e vale o menor tempo final. A figura da arena no Anexo I é um exemplo.
 
@@ -22,6 +22,6 @@ Já temos o projeto em MDF, dois motores TT com rodas do kit, roda boba, micro:b
 
 Falta confirmar os modelos dos sensores e a redução dos motores, calibrar as leituras, testar a alimentação sob carga, pesar e medir o conjunto com bateria (**até 1 kg e 250 × 250 × 200 mm**) e conferir a rotina de busca com a organização antes da inspeção. A capa e o Art. 23 indicam datas diferentes. Confirmem a data com a organização.
 
-A prova tem três tomadas de tempo. A equipe pode seguir o [tutorial de montagem e teste](carrinho-2-seguidor-autonomo/TUTORIAL-MONTAGEM-E-TESTE.md).
+A prova tem três tomadas de tempo. A equipe pode seguir o [tutorial de montagem e teste](missao-autonoma-anexo-ii/TUTORIAL-MONTAGEM-E-TESTE.md).
 
 **Placas:** para deixar os dois desafios montados ao mesmo tempo, são três micro:bits para os controles e um para o seguidor. Com três placas no total, planejem o remanejamento conforme os horários das provas.

@@ -12,4 +12,4 @@ Use o grupo de rádio 1 para treino. Na prova, troque o número em `radio.setGro
 
 Os três programas passaram na compilação com MakeCode para micro:bit 9.1.2 e na conferência das mensagens com entradas simuladas. A recepção por rádio ainda precisa ser testada com o robô oficial.
 
-[Guia dos dois desafios](../GUIA-DOS-DESAFIOS.md) · [Protótipo de treino](../carrinho-1-controle-dois-microbits/)
+[Guia dos dois desafios](../GUIA-DOS-DESAFIOS.md) · [Protótipo de treino](prototipo-de-treino/)

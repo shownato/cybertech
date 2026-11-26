@@ -17,7 +17,7 @@ Use o [regulamento oficial (Anexo II)](regulamento-oficial-seguidor-de-linha-202
 - envelope máximo de 250 × 250 × 200 mm e peso máximo de 1.000 g, já com bateria;
 - largada pelo botão do micro:bit ou por temporizador, sem empurrar.
 
-O edital proíbe sensores extras, como ultrassom, câmera, sensor de cor I2C e IMU externa. A pista tem linha branca de 19 ± 1 mm, curva com raio mínimo de 150 mm e trechos paralelos separados por pelo menos 200 mm. O regulamento diz que o traçado exato será divulgado no evento; portanto, trate o desenho da pista fornecido como referência visual, não como garantia do percurso oficial. Veja os arquivos em [`../recursos-compartilhados/`](../recursos-compartilhados/).
+O edital proíbe sensores extras, como ultrassom, câmera, sensor de cor I2C e IMU externa. A pista tem linha branca de 19 ± 1 mm, curva com raio mínimo de 150 mm e trechos paralelos separados por pelo menos 200 mm. O regulamento diz que o traçado exato será divulgado no evento; portanto, trate o desenho da pista fornecido como referência visual, não como garantia do percurso oficial. Veja os arquivos em [`pista-de-treino/`](pista-de-treino/).
 
 **Atenção a uma divergência no PDF:** a capa menciona 02/12/2026, enquanto o Art. 23 informa 03/12/2026. Confirme a data com a organização.
 
@@ -93,7 +93,7 @@ O arquivo é [`microbit-seguidor-4-sensores.ts`](microbit-seguidor-4-sensores.ts
 1. Crie um projeto novo para micro:bit.
 2. Abra o editor JavaScript e substitua o conteúdo pelo arquivo do Carrinho 2.
 3. Volte ao editor de blocos para conferir a lógica, baixe o programa e grave **um único micro:bit**, o instalado no carrinho.
-4. Não acrescente código de rádio. O programa do Carrinho 1 fica na pasta irmã `../carrinho-1-controle-dois-microbits/` e não pertence a esta prova.
+4. Não acrescente código de rádio. O programa do Carrinho 1 fica na pasta irmã `../missao-controlada-anexo-i/` e não pertence a esta prova.
 
 O programa usa botão A para iniciar e botão B para parar. No código, `BRANCO = 0` é uma hipótese inicial do nível lógico dos sensores. Teste cada sensor no branco e no preto e ajuste essa constante se a leitura real for invertida. Também ajuste velocidade e correção para o seu carrinho.
 
