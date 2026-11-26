@@ -1,29 +1,30 @@
-# Projeto dos carrinhos — SC Cria+
+# Projeto dos dois carrinhos — SC Cria+
 
-Há **dois carrinhos e dois programas diferentes**. Abra a pasta do carrinho que vai usar antes de copiar o código para o MakeCode.
+Os arquivos estão separados por veículo. **Confira o número do carrinho antes de abrir ou gravar qualquer código.**
 
-## Carrinho 1 — controle remoto com dois micro:bits
+## Carrinho 1 — controle remoto (dois micro:bits)
 
-Este é o primeiro carrinho, comandado por rádio. Ele usa dois micro:bits:
+Pasta [`carrinho-1-controle-dois-microbits`](carrinho-1-controle-dois-microbits/):
 
-1. Grave [`01-microbit-controle.ts`](carrinho-1-controle-dois-microbits/01-microbit-controle.ts) no micro:bit que fica na mão.
-2. Grave [`02-microbit-receptor-no-carrinho.ts`](carrinho-1-controle-dois-microbits/02-microbit-receptor-no-carrinho.ts) no micro:bit instalado no carrinho e ligado à L298N.
+- `01-microbit-controle.ts`: micro:bit que fica na mão.
+- `02-microbit-receptor-no-carrinho.ts`: micro:bit instalado no carrinho e ligado à L298N.
+- `LEIA-ME.md`: sequência de gravação, comandos e teste.
 
-Os dois códigos usam rádio grupo 1. O controle envia `F0`, `R0`, `F1`, `R1` ou `P0`; o receptor executa esses comandos nos motores.
+Este carrinho é dirigido por rádio. **Não grave nele o programa dos sensores do Carrinho 2.**
 
 ## Carrinho 2 — seguidor de linha autônomo
 
-Este carrinho usa quatro sensores e segue a linha sem controle remoto. O código está em [`microbit-seguidor-4-sensores.ts`](carrinho-2-seguidor-autonomo/microbit-seguidor-4-sensores.ts). **Não grave esse programa no Carrinho 1.**
+Pasta [`carrinho-2-seguidor-autonomo`](carrinho-2-seguidor-autonomo/):
 
-## Desenho, montagem e pista
+- `microbit-seguidor-4-sensores.ts`: programa autônomo dos quatro sensores.
+- `guia-montagem-carrinho-3d.html`: guia de montagem e ligações; abra no Chrome ou Edge.
+- `mapa-ligacoes.svg`: pinagem dos sensores, L298N, motores e alimentação.
+- `chassi-modificado-rodas-80mm.svg` e `chassi-modificado-rodas-80mm-3d.html`: desenho e vista 3D do chassi.
+- `microbit-montado-na-expansao.jpeg`: foto da montagem da placa.
+- `LEIA-ME.md`: descrição deste veículo.
 
-Abra `guia-montagem-carrinho-3d.html` no Chrome ou Edge. O guia mostra a montagem e inclui a pista 3D. O mapa de ligações e os arquivos do chassi também ficam nesta pasta.
+## Recursos compartilhados
 
-- `mapa-ligacoes.svg`: sensores, micro:bit, L298N, motores e alimentação do carrinho autônomo.
-- `pista-maker-2026-3d.html`: simulador 3D da pista.
-- `chassi-modificado-rodas-80mm.svg`: desenho vetorial do chassi em milímetros.
-- `chassi-modificado-rodas-80mm-3d.html`: vista 3D do chassi.
-- `microbit-montado-na-expansao.jpeg`: foto da placa montada.
-- `pista-referencia.png`: imagem do traçado.
+A pasta [`recursos-compartilhados`](recursos-compartilhados/) contém a pista 3D e a imagem do traçado, que servem para estudar/testar qualquer um dos dois carrinhos.
 
-Antes de testar os motores, levante as rodas do chão. Confira as tensões e as ligações da L298N; não conecte a bateria diretamente ao micro:bit.
+Antes de testar os motores, suspenda as rodas e confira as ligações e tensões. Nunca ligue a bateria diretamente ao micro:bit.

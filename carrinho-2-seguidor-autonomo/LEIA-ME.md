@@ -1,3 +1,11 @@
 # Carrinho 2 — seguidor de linha autônomo
 
-Grave `microbit-seguidor-4-sensores.ts` no micro:bit desse carrinho. Este código lê quatro sensores e controla os motores pela L298N; não é o programa do controle remoto do Carrinho 1.
+Esta pasta contém somente a montagem e o programa do carrinho que procura e segue a linha:
+
+- `microbit-seguidor-4-sensores.ts`: grave no micro:bit deste carrinho.
+- `guia-montagem-carrinho-3d.html`: montagem, conexões e pista de teste. Abra no Chrome ou Edge.
+- `mapa-ligacoes.svg`: fios dos quatro sensores, micro:bit e L298N.
+- `chassi-modificado-rodas-80mm.svg` e `chassi-modificado-rodas-80mm-3d.html`: arquivos do chassi.
+- `microbit-montado-na-expansao.jpeg`: foto da expansão montada.
+
+A pista fica em `../recursos-compartilhados/`. **Não use o código de controle remoto do Carrinho 1 neste micro:bit.**
