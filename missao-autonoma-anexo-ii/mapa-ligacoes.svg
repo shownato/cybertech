@@ -53,6 +53,6 @@ text{font-family:Arial,sans-serif;fill:#18212d}.title{font-size:28px;font-weight
 <text x="407" y="639" class="body">LM2596 OUT− → GND da L298N</text>
 <text x="790" y="609" class="body">Expansão GND ↔ L298N GND</text>
 <text x="790" y="639" class="body">Sensor GND ↔ expansão GND</text>
-<text x="58" y="691" class="small" font-weight="700">Atenção: não ligue OUT+ do LM2596 ao borne 5V da L298N. Mantenha o micro:bit no USB/alimentação própria.</text>
-<text x="58" y="718" class="small">Ajuste o LM2596 para a tensão nominal dos motores (kit TT: confira a etiqueta; teste inicial em baixa tensão).</text>
+<text x="58" y="691" class="small" font-weight="700">Confirme o borne 5V e o jumper 5V-EN antes de alimentar a ponte H. Use USB no primeiro teste do micro:bit.</text>
+<text x="58" y="718" class="small">Bateria: 11 V informados na entrada do LM2596. Confirme a tensão nominal dos motores antes de ajustar a saída.</text>
 </svg>

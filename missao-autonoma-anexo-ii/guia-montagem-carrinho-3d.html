@@ -17,7 +17,7 @@ table{border-collapse:collapse;width:100%;max-width:760px}th,td{text-align:left;
 <section class="viewer"><div class="controls"><button id="prev">Anterior</button><select id="stage" aria-label="Etapa de montagem"></select><button id="next">Próxima</button><button id="top">Vista superior</button><button id="explode">Separar barra</button></div>
 <canvas aria-label="Modelo tridimensional da montagem da barra de sensores"></canvas></section><h2 id="stepTitle"></h2><div id="instructions"></div>
 <p>O modelo usa a base do nosso SVG. Suportes, posições das placas e altura dos sensores são referências para conferir com as peças reais.</p>
-<p><a href="chassi-modificado-rodas-80mm.svg">SVG da base</a> · <a href="microbit-seguidor-4-sensores.ts">Código MakeCode</a></p><section id="pista">
+<p><a href="TUTORIAL-MONTAGEM-E-TESTE.md">Tutorial com as cores dos fios</a> · <a href="regulador-lm2596.jpeg">Foto do regulador</a></p><p><a href="chassi-modificado-rodas-80mm.svg">SVG da base</a> · <a href="microbit-seguidor-4-sensores.ts">Código MakeCode</a></p><section id="pista">
 <h2>Pista 3D de teste</h2>
 <p>Use <strong>Quatro sensores</strong> para testar o controle ou <strong>Volta guiada</strong> para conhecer o percurso. <a href="pista-de-treino/pista-maker-2026-3d.html" target="_blank" rel="noopener">Abrir pista em outra aba</a></p>
 <iframe title="Simulador da pista 3D" src="pista-de-treino/pista-maker-2026-3d.html" loading="lazy" style="width:100%;height:clamp(680px,95vh,950px);border:1px solid #c5cedb;border-radius:12px"></iframe>
@@ -98,7 +98,7 @@ let photoOnly=false;
 let deckOnly=false;
 let exploded=false;
 const labels=[
-  {text:'Bateria 9 V',at:[0,-66,67],side:-1},
+  {text:'Bateria (11 V informados)',at:[0,-66,67],side:-1},
   {text:'micro:bit e expansão',at:[0,-10,58],side:-1},
   {text:'L298N',at:[29,23,65],side:1},
   {text:'LM2596 HW-411',at:[-48,8,63],side:-1},
@@ -181,7 +181,7 @@ function render(){
   if(stage>=6&&showLabels&&pitch>.2&&width/dpr>=510){
     ctx.font='600 '+13*dpr+'px system-ui';
     ctx.textBaseline='middle';
-    const rows=labels.filter(label=>!photoOnly||!['Bateria 9 V','L298N','LM2596 HW-411'].includes(label.text)).map(({text,at,side,bar})=>{
+    const rows=labels.filter(label=>!photoOnly||!['Bateria (11 V informados)','L298N','LM2596 HW-411'].includes(label.text)).map(({text,at,side,bar})=>{
       const [x,y]=project([at[0],at[1],at[2]-(exploded&&bar?42:0)]);
       return {text,x,y,side};
     }).sort((a,b)=>a.y-b.y);
@@ -214,7 +214,7 @@ const steps=[
  ['Fixar a L298N','Posicione a ponte H à direita, com acesso aos bornes. Prenda em espaçadores e passe os fios dos motores longe dos pneus.'],
  ['Fixar regulador e bateria','Coloque o LM2596 à esquerda, com acesso ao ajuste. Prenda a bateria atrás com uma cinta e deixe o conector acessível. Faça a fiação com a bateria desconectada.'],
  ['Ligar os sinais','<p>O desenho abaixo mostra a ligação por função. Em cada sensor, use os pinos identificados na própria placa: VCC, GND e DO (saída digital). Ligue VCC a 3V, GND a GND e DO ao pino indicado. Confirme que os módulos aceitam sinal/alimentação de 3,3 V antes de conectar ao micro:bit.</p><img src="mapa-ligacoes.svg" alt="Mapa colorido das ligações dos quatro sensores, micro:bit, L298N, motores e alimentação" style="display:block;width:100%;max-width:1000px;height:auto;margin:12px auto;border:1px solid #c5cedb;border-radius:12px"><table><thead><tr><th>Fio de sinal</th><th>Sensor</th><th>Pino da expansão</th></tr></thead><tbody><tr><td>🟡 Amarelo</td><td>S1 · extremo esquerdo · DO</td><td>P0</td></tr><tr><td>🔵 Azul</td><td>S2 · centro esquerdo · DO</td><td>P1</td></tr><tr><td>🟠 Laranja</td><td>S3 · centro direito · DO</td><td>P2</td></tr><tr><td>⚪ Branco</td><td>S4 · extremo direito · DO</td><td>P8</td></tr></tbody></table><p><strong>L298N:</strong> P13 → ENA; P14 → IN1; P15 → IN2; P16 → ENB; P19 → IN3; P20 → IN4. Retire os jumpers ENA e ENB para controlar a velocidade por P13/P16. Motor esquerdo nos bornes OUT1/OUT2; motor direito em OUT3/OUT4. Ligue também GND da expansão ao GND da L298N.</p>'],
- ['Alimentar e testar','<p>Com a bateria desconectada, ajuste o LM2596 para a tensão nominal dos motores, conferindo a etiqueta do kit; para o primeiro teste, use tensão baixa dentro da faixa dos motores (TT normalmente 3–6 V). A saída OUT+ alimenta somente o borne +12V/VS da L298N; OUT− vai ao GND da L298N. Una os GND da L298N, expansão e sensores. Mantenha o micro:bit alimentado por USB ou pela entrada própria da expansão.</p><p><strong>Não ligue OUT+ do LM2596 ao borne 5V da L298N.</strong> Na placa L298N comum, o borne 5V é da lógica/regulador e depende do jumper e do modelo da placa. Não conecte a bateria de 9 V diretamente ao micro:bit nem aos sensores. Antes de ligar, confira polaridade, tensão ajustada e ausência de fios soltos. Com as rodas suspensas, aperte A para iniciar e B para parar; confira o sentido das rodas e a leitura de claro/escuro de cada sensor.</p><table><thead><tr><th>Da</th><th>Para</th></tr></thead><tbody><tr><td>Bateria +</td><td>IN+ do LM2596</td></tr><tr><td>Bateria −</td><td>IN− do LM2596</td></tr><tr><td>OUT+ do LM2596</td><td>+12V / VS da L298N</td></tr><tr><td>OUT− do LM2596</td><td>GND da L298N</td></tr><tr><td>GND da expansão</td><td>GND da L298N e GND dos sensores</td></tr></tbody></table>']
+ ['Alimentar e testar','<p>Bateria de 11 V informados em IN+ e IN− do LM2596. Meça OUT+ e OUT− em volts DC com a saída desconectada. No teste dos sensores, use USB no micro:bit.</p><p>Antes de ligar os motores, confirme a tensão nominal e identifique o borne 5V e o jumper 5V-EN da L298N. Consulte o <a href="TUTORIAL-MONTAGEM-E-TESTE.md">tutorial atualizado</a>.</p>']
 ];
 const select=document.querySelector('#stage');
 steps.forEach(([title],index)=>select.add(new Option(title,index)));

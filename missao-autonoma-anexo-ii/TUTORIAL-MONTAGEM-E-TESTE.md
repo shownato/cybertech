@@ -31,7 +31,7 @@ O edital proíbe sensores extras, como ultrassom, câmera, sensor de cor I2C e I
 | L298N | Informada pela equipe | Conferir rótulos, jumpers ENA/ENB e borne de alimentação |
 | 4 sensores ópticos | Quantidade dentro do limite | Confirmar modelo aceito, rótulos VCC/GND/DO e nível lógico de DO |
 | LM2596 HW-411 | Informado pela equipe | Ajustar com multímetro antes de conectar ao circuito |
-| Bateria 9 V | Escolha atual | Verificar se mantém tensão sob a corrente dos motores e fica presa com segurança |
+| Bateria (11 V informados) | Escolha atual | Verificar se mantém tensão sob a corrente dos motores e fica presa com segurança |
 | Roda boba e espaçadores | Usados no conjunto | Conferir folga, altura e estabilidade com o peso instalado |
 
 O modelo exato dos sensores e a relação dos motores ainda precisam de confirmação física. Não trate o desenho como confirmação dessas especificações.
@@ -50,6 +50,8 @@ O modelo exato dos sensores e a relação dos motores ainda precisam de confirma
 
 ## 4. Ligue os sensores e a ponte H
 
+Na [foto da expansão](microbit-montado-na-expansao.jpeg), a fileira amarela é sinal, a vermelha é 3.3V e a preta é GND. O pino 0 fica entre 3 e 4, o 1 entre 7 e 8, o 2 entre 12 e 13 e o 8 entre 1 e 9.
+
 Consulte o [mapa visual de ligações](mapa-ligacoes.svg). Na expansão, conecte o fio de sinal aos furos com o número impresso; não conte posições a partir da borda.
 
 | Sensor, da esquerda para a direita no sentido de marcha | Cor do fio de sinal | Pino micro:bit |
@@ -63,28 +65,36 @@ Para cada sensor, ligue `DO` ao pino indicado, `VCC` à alimentação apropriada
 
 Ligações de comando da L298N:
 
-| Expansão | L298N |
+| Expansão e cor sugerida | L298N |
 |---|---|
-| P13 | ENA (PWM do motor esquerdo) |
-| P14 | IN1 |
-| P15 | IN2 |
-| P16 | ENB (PWM do motor direito) |
-| P19 | IN3 |
-| P20 | IN4 |
-| GND | GND comum |
+| P13 (roxo) | ENA (PWM do motor esquerdo) |
+| P14 (verde) | IN1 |
+| P15 (cinza) | IN2 |
+| P16 (marrom) | ENB (PWM do motor direito) |
+| P19 (rosa) | IN3 |
+| P20 (azul-claro) | IN4 |
+| GND (preto) | GND comum |
 | Motor esquerdo | OUT1 e OUT2 |
 | Motor direito | OUT3 e OUT4 |
 
 Com tudo desligado, retire os jumpers ENA e ENB para controlar velocidade pelo programa. Se uma roda girar no sentido errado, desligue e inverta os dois fios daquele motor no respectivo par de saídas.
 
-### Alimentação: faça com atenção
+### Alimentação e conferência do regulador
 
-- Bateria `+` e `−` entram em `IN+` e `IN−` do LM2596.
-- Ajuste o regulador com multímetro, sem a L298N conectada, para a tensão nominal dos motores indicada no próprio kit. Os motores amarelos costumam ser de baixa tensão; não aplique 9 V diretamente sem confirmação da etiqueta.
-- `OUT+` do LM2596 vai ao borne de alimentação dos motores `+12V/VS` da L298N; `OUT−` vai ao `GND` da L298N.
-- Una os terras da L298N, expansão e sensores. Não ligue `OUT+` do LM2596 ao borne `5V` da L298N; o uso desse borne depende do regulador/jumper e da placa específica.
-- Alimente o micro:bit pela USB nos testes de bancada ou pela entrada própria da expansão conforme as instruções do fabricante. Nunca ligue a bateria diretamente ao micro:bit.
-- A bateria 9 V deve ser testada sob carga. Se a tensão cair quando os motores partirem, o robô pode falhar; verifique uma fonte permitida que sustente a corrente necessária.
+Com USB e bateria desconectados, prepare os fios nos quatro pontos quadrados da [foto do LM2596](regulador-lm2596.jpeg).
+
+| Posição na foto | Ponto | Fio |
+|---|---|---|
+| Embaixo à esquerda | `IN+` | Vermelho do positivo da bateria (11 V informados) |
+| Embaixo à direita | `IN−` | Preto do negativo da bateria |
+| Em cima à esquerda | `OUT+` | Vermelho etiquetado MOTOR+ |
+| Em cima à direita | `OUT−` | Preto, retorno da alimentação |
+
+Com a saída desconectada, ligue a bateria à entrada e meça em volts DC. Ponta vermelha em OUT+ e preta em OUT−. O parafuso dourado do bloco azul ajusta a saída.
+
+**Antes de ligar a ponte H, confirme a tensão nominal dos motores e identifique o borne 5V e o jumper 5V-EN na L298N.** A alimentação dos motores entra em VS/+12V e a lógica da ponte precisa de sua própria alimentação de 5 V, conforme o módulo. A ligação do borne 5V e o ajuste final ficam pendentes dessa conferência. Com a alimentação definida, OUT−, GND da L298N e GND da expansão ficam em comum.
+
+No primeiro teste dos sensores, alimente o micro:bit pelo USB. Mantenha 11 V e 5 V fora da fileira 3.3V e dos pinos de sinal.
 
 ## 5. Grave o programa do Carrinho 2
 
@@ -100,7 +110,7 @@ O programa usa botão A para iniciar e botão B para parar. No código, `BRANCO 
 ## 6. Teste em etapas
 
 1. **Sem bateria dos motores:** alimente o micro:bit por USB e mova cada sensor sobre branco/preto. Confirme que os quatro pinos mudam de leitura e que esquerda/direita não estão trocadas.
-2. **Rodas suspensas:** ligue a alimentação dos motores, aperte A e observe as rodas. Aperte B e confirme que ambas param.
+2. **Rodas suspensas:** após confirmar a alimentação da ponte H na etapa anterior, ligue a alimentação dos motores, aperte A e observe as rodas. Aperte B e confirme que ambas param.
 3. **Teste de sentido:** identifique qual roda é esquerda/direita e confirme frente/ré. Corrija os fios ou `INVERTER_ESQUERDO`/`INVERTER_DIREITO` no código se necessário.
 4. **Teste de altura:** coloque o carrinho com a bateria instalada sobre a pista e ajuste os sensores até a leitura de branco/preto ficar estável.
 5. **Trecho reto e curva:** comece devagar em um trecho reto, depois teste curvas e cruzamentos. Ajuste uma variável por vez e anote o resultado.
@@ -113,7 +123,7 @@ O programa usa um giro curto de busca quando os sensores deixam de encontrar a l
 - [ ] Relação/modelo dos motores confirmada como TT 48:1.
 - [ ] Modelo dos sensores confirmado dentro dos tipos permitidos.
 - [ ] Quatro saídas DO conferidas e seguras para 3,3 V.
-- [ ] Tensão do LM2596 medida e adequada aos motores.
+- [ ] Tensão dos motores, ligação do jumper 5V-EN e saída do LM2596 confirmadas antes de energizar a ponte.
 - [ ] Bateria testada sob carga e presa ao chassi.
 - [ ] Largura: ____ mm · Comprimento: ____ mm · Altura: ____ mm.
 - [ ] Peso com bateria: ____ g.
