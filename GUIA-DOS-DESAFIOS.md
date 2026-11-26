@@ -4,11 +4,11 @@
 
 A organização fornece o robô. A equipe leva **três micro:bits transmissores** e um notebook para configurar nos três o mesmo grupo de rádio atribuído no dia.
 
-| Controle | Comandos oficiais | O que temos e o que conferir |
+| Controle | Comandos oficiais | Programa conferido |
 |---|---|---|
-| 1 · Movimento retilíneo | F0 e F1 para frente lenta e rápida, R0 e R1 para ré lenta e rápida, P0 para parar | O código de mão do protótipo já envia essas cinco mensagens. Conferir o envio no grupo atribuído. |
-| 2 · Giro | D0 direita, E0 esquerda, P0 parada | Já trabalhamos com um controle de giro. Recuperar e conferir a versão gravada. |
-| 3 · Respostas | AA, BB, CC, DD, EE para A até E | Conferir se há versão gravada que seleciona e envia as cinco alternativas. |
+| 1 · Movimento retilíneo | F0 e F1 para frente lenta e rápida, R0 e R1 para ré lenta e rápida, P0 para parar | [Movimento](missao-controlada-anexo-i/01-movimento.ts) |
+| 2 · Giro | D0 direita, E0 esquerda, P0 parada | [Giro](missao-controlada-anexo-i/02-giro.ts) |
+| 3 · Respostas | AA, BB, CC, DD, EE para A até E | [Respostas](missao-controlada-anexo-i/03-respostas.ts) |
 
 O [protótipo de dois micro:bits](carrinho-1-controle-dois-microbits/) serve para treino. Seu receptor interpreta F0/F1 como comandos de motores diferentes. Na prova, esses comandos indicam velocidades do robô da organização. O receptor USB também serve para treino. Se houver somente três placas disponíveis, dedique as três aos transmissores para a prova.
 
