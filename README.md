@@ -22,9 +22,11 @@ Pasta [`carrinho-2-seguidor-autonomo`](carrinho-2-seguidor-autonomo/):
 - `chassi-modificado-rodas-80mm.svg` e `chassi-modificado-rodas-80mm-3d.html`: desenho e vista 3D do chassi.
 - `microbit-montado-na-expansao.jpeg`: foto da montagem da placa.
 - `LEIA-ME.md`: descrição deste veículo.
+- `TUTORIAL-MONTAGEM-E-TESTE.md`: tutorial completo, com requisitos do edital, montagem, ligações, programação, calibração e checklist.
+- `regulamento-oficial-seguidor-de-linha-2026.pdf`: Anexo II usado para conferir as regras.
 
 ## Recursos compartilhados
 
-A pasta [`recursos-compartilhados`](recursos-compartilhados/) contém a pista 3D e a imagem do traçado, que servem para estudar/testar qualquer um dos dois carrinhos.
+A pasta [`recursos-compartilhados`](recursos-compartilhados/) contém a pista 3D, a imagem e o PDF do desenho do traçado. O PDF do desenho não substitui o regulamento.
 
 Antes de testar os motores, suspenda as rodas e confira as ligações e tensões. Nunca ligue a bateria diretamente ao micro:bit.
